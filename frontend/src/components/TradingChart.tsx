@@ -138,7 +138,7 @@ export const TradingChart: React.FC<TradingChartProps> = ({
 
     chartRef.current = chart;
 
-    // Candlestick Series with Real-Time Continuous Pulse Animation
+    // Candlestick Series
     const candleSeries = chart.addSeries(CandlestickSeries, {
       upColor: '#089981',
       downColor: '#f23645',
@@ -146,10 +146,10 @@ export const TradingChart: React.FC<TradingChartProps> = ({
       borderDownColor: '#f23645',
       wickUpColor: '#089981',
       wickDownColor: '#f23645',
-      // lastPriceAnimation exists at runtime in lightweight-charts v5 but is not
-      // yet reflected in the TypeScript type definitions — cast to bypass the error.
-      ...({ lastPriceAnimation: LastPriceAnimationMode.Continuous } as any),
-    } as any);
+    });
+    // Apply lastPriceAnimation via applyOptions to avoid TS2353 (not yet typed in v5)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (candleSeries as any).applyOptions({ lastPriceAnimation: LastPriceAnimationMode.Continuous });
     candleSeriesRef.current = candleSeries;
 
     // Volume Series
