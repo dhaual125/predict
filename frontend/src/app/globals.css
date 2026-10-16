@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #0e1118;
+    --bg-secondary: #131722;
+    --bg-card: #181d28;
+    --bg-hover: #222736;
+    --border-color: #242938;
+    --text-primary: #e6ebf2;
+    --text-secondary: #848e9c;
+    --bull-color: #089981;
+    --bull-hover: #07806c;
+    --bear-color: #f23645;
+    --bear-hover: #cb2d3a;
+    --accent-blue: #2962ff;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow: hidden;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Custom Sleek Scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0e1118;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a3142;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3b455c;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(8, 153, 129, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(8, 153, 129, 0.8);
+  }
+}
+
+@keyframes pulseRedGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(242, 54, 69, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(242, 54, 69, 0.8);
+  }
+}
+
+.glow-bull {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.glow-bear {
+  animation: pulseRedGlow 2s infinite ease-in-out;
+}
