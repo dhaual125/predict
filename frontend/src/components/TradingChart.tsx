@@ -146,8 +146,10 @@ export const TradingChart: React.FC<TradingChartProps> = ({
       borderDownColor: '#f23645',
       wickUpColor: '#089981',
       wickDownColor: '#f23645',
-      lastPriceAnimation: LastPriceAnimationMode.Continuous,
-    });
+      // lastPriceAnimation exists at runtime in lightweight-charts v5 but is not
+      // yet reflected in the TypeScript type definitions — cast to bypass the error.
+      ...({ lastPriceAnimation: LastPriceAnimationMode.Continuous } as any),
+    } as any);
     candleSeriesRef.current = candleSeries;
 
     // Volume Series
